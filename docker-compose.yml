@@ -386,8 +386,20 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        frontend:
+          aliases:
+            - plus.test
+            - october.test
+            - scout.test
+            - transaction.test
+            - supplier.test
+        backend:
+          aliases:
+            - plus.test
+            - october.test
+            - scout.test
+            - transaction.test
+            - supplier.test
 
 ### Blackfire ########################################
     blackfire:
@@ -595,8 +607,8 @@ services:
       ports:
         - "${MONGODB_PORT}:27017"
       volumes:
-        - ${DATA_PATH_HOST}/mongo:/data/db
-        - ${DATA_PATH_HOST}/mongo_config:/data/configdb
+        #- ${DATA_PATH_HOST}/mongo:/data/db
+        - ${DATA_PATH_HOST}/mongo_config:/data/mongodb
       networks:
         - backend
 
